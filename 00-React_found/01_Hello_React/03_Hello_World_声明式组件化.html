@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>header</div>
+    <div id="app">app</div>
+    <div>footer</div>
+    <!-- 声明式编程
+    1.CDN方式引入React的三个依赖 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- 开始开发 (script标签里写jsx代码，需要添加type=“text/babel”属性)-->
+    <script type="text/babel">
+        // 1.封装app组件
+        class App extends React.Component{
+            constructor(){
+                super();
+                this.state={//更新数据，组件自动重新渲染
+                    message:"hello world"
+                }
+            }
+            btnClick(){
+                this.setState({//更新数据，必须用setState方法
+                    message:"world hello"
+                })
+            }
+            render(){
+                return (<>
+                <h2>{this.state.message}</h2>
+                <button onClick={this.btnClick.bind(this)}>改变文本</button>
+                </>)
+            }
+        }
+        //2.渲染组件
+        ReactDOM.render(<App/>,document.getElementById("app"))
+    </script>
+</body>
+</html>

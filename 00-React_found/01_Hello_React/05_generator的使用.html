@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel"></script>
+    <script type="text/babel">
+      //     //1.生成器函数
+      //    function* foo(){
+      //     yield "hhh";
+      //     yield "jhf";
+      //    }
+      //    const f=foo()//2.迭代器
+      //    console.log(f)
+      //    //3.使用迭代器
+      //    const out=f.next();
+      //    console.log(out)
+      //4.generator和promise一起使用
+      function* bar() {
+        console.log("111");
+        const result = yield new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("hello");
+          }, 3000);
+        });
+        console.log(result);
+      }
+      const it = bar();
+      it.next().value.then((res) => {
+        it.next(res);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel"></script>
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {};
+        }
+        render() {
+          //1.多行字符串
+          const temp1 = `this
+                is
+                an
+                apple`;
+          // console.log(temp1)
+          //2.字符串插值
+          const fruit = "apple";
+          const temp2 = `do
+                you
+                like eat ${fruit}`;
+          // console.log(temp2)
+          //3.嵌入表达式
+          const a = 2;
+          const b = 5;
+          const temp3 = `${a}加上${b}等于${a + b}`;
+        //   console.log(temp3);
+          //4.标签模板字符串
+          function tag(strings, ...args) {
+            console.log(strings);//['aa: ', ' ,bb: ', '']
+            console.log(args);//['nihao', 45]
+          }
+          const aa = "nihao";
+          const bb = 45;
+          tag`aa: ${aa} ,bb: ${bb}`;
+          return <div>Hello</div>;
+        }
+      }
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>
